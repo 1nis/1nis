@@ -1,5 +1,5 @@
 # 💫 À propos de moi :
-😊 - **En recherche active** d'alternance pour **Septembre 2025** <br>📚 - **Master 1 MIAGE** - Double compétence tech & management<br>🎯 - Mon objectif est d'intégrer une entreprise innovante pour un contrat d'apprentissage en développement et gestion de projets IT <br> ❓ - N'hésitez pas à me demander plus d'informations à propos de moi.<br>
+📚 - **Master 1 MIAGE** - Double compétence tech & management<br>🎯 - Mon objectif est d'intégrer une entreprise innovante en développement et gestion de projets IT <br> ❓ - N'hésitez pas à me demander plus d'informations à propos de moi.<br>
 
 
 ## 🌐 Réseaux sociaux :
