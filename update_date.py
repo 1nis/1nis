@@ -3,7 +3,7 @@ import datetime
 # 1. Obtenir la date actuelle
 now = datetime.datetime.now()
 date_str = now.strftime("%d/%m/%Y") # Format: JJ/MM/AAAA
-new_content = f"📅 *Mise à jour automatique le : {date_str}*"
+new_content = f"📅 - **Mise à jour automatique le : {date_str}** <br>"
 
 # 2. Lire le fichier README
 file_path = 'README.md'
