@@ -2,14 +2,16 @@ name: Update Date in README
 
 on:
   schedule:
-    # S'exécute tous les jours à 00:00 UTC
-    - cron: '0 0 * * *'
-  workflow_dispatch: # Permet de lancer manuellement le script pour tester
+    - cron: '0 0 * * *' # Tous les jours à minuit UTC
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout du code
         uses: actions/checkout@v3
@@ -27,7 +29,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          # Vérifie s'il y a des changements avant de commit pour éviter les erreurs
           if git diff --staged --quiet; then
             echo "Pas de changements détectés."
           else
