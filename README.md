@@ -1,4 +1,5 @@
 # 💫 À propos de moi :
+📅 **Mise à jour automatique le : 10/12/2025**
 📚 - **Master 2 MIAGE** - Double compétence tech & management<br>🎯 - Mon objectif est d'intégrer une entreprise innovante en développement et gestion de projets IT <br> ❓ - N'hésitez pas à me demander plus d'informations à propos de moi.<br>
 
 
