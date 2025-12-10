@@ -16,23 +16,17 @@ def update_readme():
     now = datetime.datetime.now()
     date_str = now.strftime("%d/%m/%Y") # Format : 10/12/2025
     
-    # Voici le texte exact qu'on veut insérer (avec les double backticks)
-    new_text_block = f"``📅 - **Mise à jour automatique le : {date_str}**``"
+    new_text_block = f"``📅 - Mise à jour automatique le : {date_str}``"
 
     # 3. CHERCHER ET REMPLACER
-    # On cherche le pattern : 
-    # `` (début code) + calendrier + texte gras + n'importe quelle date + `` (fin code)
-    # Les \ servent à dire que les étoiles ** sont du texte, pas du code regex
-    pattern = r"``📅 - \*\*Mise à jour automatique le : .*?\*\*``"
+    pattern = r"``📅 - Mise à jour automatique le : .*?``"
     
-    # Vérifier si le pattern existe dans le fichier avant de remplacer
     if not re.search(pattern, content):
         print("❌ ERREUR : Le script ne trouve pas la ligne de date dans le README.")
         print("Vérifie que ton README contient bien une ligne qui ressemble à :")
-        print("``📅 - **Mise à jour automatique le : XX/XX/XXXX**``")
+        print("``📅 - Mise à jour automatique le : XX/XX/XXXX``")
         return
 
-    # Remplacer l'ancienne date par la nouvelle
     new_content = re.sub(pattern, new_text_block, content)
 
     # 4. Sauvegarder si changement
