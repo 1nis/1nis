@@ -2,16 +2,15 @@ name: Update Date in README
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Tous les jours à minuit UTC
-  workflow_dispatch:
+    - cron: '0 0 * * *' # Minuit UTC
+  workflow_dispatch: # Lancement manuel uniquement (PAS DE PUSH)
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     permissions:
-      contents: write
-
+      contents: write # Important pour avoir le droit de modifier
+    
     steps:
       - name: Checkout du code
         uses: actions/checkout@v3
@@ -29,8 +28,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
+          # Si rien n'a changé, on ne commit pas (ça évite les erreurs)
           if git diff --staged --quiet; then
-            echo "Pas de changements détectés."
+            echo "Pas de changement de date nécessaire."
           else
             git commit -m "Auto-update date: $(date +'%d/%m/%Y')"
             git push
