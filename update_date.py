@@ -8,7 +8,7 @@ def update_readme():
     # 1. Obtenir la date
     now = datetime.datetime.now()
     date_str = now.strftime("%d/%m/%Y")
-    new_line = f"📅 - **Mise à jour automatique le : {date_str}** <br>\n"
+    new_line = f"📅 - **Mise à jour automatique le : {date_str}**\n"
 
     # 2. Lire le fichier
     with open(file_path, 'r', encoding='utf-8') as file:
