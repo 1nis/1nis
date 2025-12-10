@@ -1,9 +1,9 @@
 # 💫 À propos de moi :
 
-``📅 - **Mise à jour automatique le : 10/12/2025**`` <br>
-📚 - **Master 2 MIAGE** - Double compétence tech & management<br>
-🎯 - Mon objectif est d'intégrer une entreprise innovante en développement et gestion de projets IT <br>
-❓ - N'hésitez pas à me demander plus d'informations à propos de moi.<br>
+``📅 - Mise à jour automatique le : 10/12/2025`` <br>
+``📚 - Master 2 MIAGE - Double compétence tech & management`` <br>
+``🎯 - Mon objectif est d'intégrer une entreprise innovante en développement et gestion de projets IT`` <br>
+``❓ - N'hésitez pas à me demander plus d'informations à propos de moi.`` <br>
 
 ## 🌐 Réseaux sociaux :
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anis-kherraf/) 
