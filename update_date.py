@@ -1,37 +1,48 @@
 import datetime
-import re
 
 def update_readme():
     file_path = 'README.md'
+    start_marker = ''
+    end_marker = ''
     
-    # 1. Lire le contenu actuel
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            content = file.read()
-    except FileNotFoundError:
-        print("❌ Erreur : Le fichier README.md est introuvable.")
-        return
-
-    # 2. Préparer la nouvelle date
+    # 1. Obtenir la date
     now = datetime.datetime.now()
     date_str = now.strftime("%d/%m/%Y")
-    # Note : On garde les balises dans le remplacement pour ne pas les perdre
-    new_content_block = f"\n📅 - **Mise à jour automatique le : {date_str}** <br>\n"
+    new_line = f"📅 - **Mise à jour automatique le : {date_str}** <br>\n"
 
-    # 3. Utiliser une Regex pour trouver et remplacer UNIQUEMENT le bloc ciblé
-    # Le pattern cherche : (Début) n'importe quoi au milieu (Fin)
-    pattern = r".*?"
+    # 2. Lire le fichier
+    with open(file_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+
+    # 3. Trouver les index
+    start_index = -1
+    end_index = -1
+
+    for i, line in enumerate(lines):
+        if start_marker in line:
+            start_index = i
+        elif end_marker in line:
+            end_index = i
+            break # On arrête dès qu'on a trouvé la fin
+
+    # 4. Vérifications de sécurité
+    if start_index == -1 or end_index == -1:
+        print("❌ Erreur : Balises introuvables. Le README n'a pas été modifié.")
+        return
     
-    # re.DOTALL permet au point (.) de matcher aussi les sauts de ligne
-    new_full_content = re.sub(pattern, new_content_block, content, flags=re.DOTALL)
+    if end_index <= start_index:
+        print("❌ Erreur : L'ordre des balises est incorrect.")
+        return
 
-    # 4. Vérifier si on a fait un changement
-    if new_full_content == content:
-        print("ℹ️ La date est déjà à jour. Aucun changement nécessaire.")
-    else:
-        with open(file_path, 'w', encoding='utf-8') as file:
-            file.write(new_full_content)
-        print(f"✅ Succès : Date mise à jour au {date_str}")
+    # 5. Reconstruction du contenu (Chirurgical)
+    # On garde tout AVANT le début + le début + la nouvelle ligne + la fin + tout APRÈS la fin
+    new_content = lines[:start_index+1] + [new_line] + lines[end_index:]
+
+    # 6. Écriture
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.writelines(new_content)
+    
+    print(f"✅ README mis à jour avec succès : {date_str}")
 
 if __name__ == "__main__":
     update_readme()
