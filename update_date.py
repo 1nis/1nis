@@ -1,28 +1,37 @@
 import datetime
 import re
 
-# 1. Obtenir la date actuelle
-now = datetime.datetime.now()
-date_str = now.strftime("%d/%m/%Y")
-new_content = f"📅 - **Mise à jour automatique le : {date_str}** <br>"
+def update_readme():
+    file_path = 'README.md'
+    
+    # 1. Lire le contenu actuel
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+    except FileNotFoundError:
+        print("❌ Erreur : Le fichier README.md est introuvable.")
+        return
 
-# 2. Lire le fichier README
-file_path = 'README.md'
-with open(file_path, 'r', encoding='utf-8') as file:
-    content = file.read()
+    # 2. Préparer la nouvelle date
+    now = datetime.datetime.now()
+    date_str = now.strftime("%d/%m/%Y")
+    # Note : On garde les balises dans le remplacement pour ne pas les perdre
+    new_content_block = f"\n📅 - **Mise à jour automatique le : {date_str}** <br>\n"
 
-# 3. Remplacer le contenu avec une Regex (Plus sûr)
-# Cela cherche tout ce qui est entre les balises et le remplace
-pattern = r"()(.*?)()"
-replacement = f"\\1\n{new_content}\n\\3"
+    # 3. Utiliser une Regex pour trouver et remplacer UNIQUEMENT le bloc ciblé
+    # Le pattern cherche : (Début) n'importe quoi au milieu (Fin)
+    pattern = r".*?"
+    
+    # re.DOTALL permet au point (.) de matcher aussi les sauts de ligne
+    new_full_content = re.sub(pattern, new_content_block, content, flags=re.DOTALL)
 
-# Le flag DOTALL permet au point (.) de matcher aussi les retours à la ligne
-new_content_full = re.sub(pattern, replacement, content, flags=re.DOTALL)
+    # 4. Vérifier si on a fait un changement
+    if new_full_content == content:
+        print("ℹ️ La date est déjà à jour. Aucun changement nécessaire.")
+    else:
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(new_full_content)
+        print(f"✅ Succès : Date mise à jour au {date_str}")
 
-# 4. Écrire les modifications seulement si ça a changé
-if new_content_full != content:
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(new_content_full)
-    print(f"✅ README mis à jour avec la date : {date_str}")
-else:
-    print("ℹ️ La date était déjà à jour, pas de changement.")
+if __name__ == "__main__":
+    update_readme()
