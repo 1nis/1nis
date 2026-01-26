@@ -14,7 +14,7 @@
 
 # 📊 Statistiques GitHub :
 ![](https://readme-stats-jade.vercel.app/api?username=1nis&show_icons=true&theme=tokyonight&hide_border=false&include_all_commits=false&count_private=false&layout=compact)<br/>
-[![GitHub Streak](https://streak-stats-lac.vercel.app?user=1nis&theme=tokyonight&hide_border=false&include_all_commits=false&count_private=false&layout=compact)](https://git.io/streak-stats)<br/>
+[![GitHub Streak](https://streak-stats-lac.vercel.app/?user=1nis&theme=tokyonight&hide_border=false)](https://git.io/streak-stats)<br/>
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=1nis&theme=tokyonight&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
 ---
